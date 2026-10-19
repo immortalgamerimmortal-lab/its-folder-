@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Montserrat",sans-serif;
+}
+
+
+body{
+    background-color: #c9d6ff;
+    background: linear-gradient(to right,#e2e2e2,#c9d6ff);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100vh;
+
+}
+
+.container{
+    background-color: #fff  ;
+    border-radius: 30px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.35);
+    position: relative;
+    overflow: hidden;
+    width: 768px;
+    max-width: 100%;
+    min-height: 480px;
+}
+
+
+
+.container p{
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0.3px;
+    margin:20px 0;
+}
+
+.container span{
+    font-size: 14px;
+}
+
+.container a{
+    color: #333;
+    font-size: 13px;
+    text-decoration: none;
+    margin: 15px 0 10px;
+}
+
+.container button{
+    background-color: #512da8;
+    color: #fff;
+    font-size: 12px;
+    padding: 10px 45px;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.container button.hidden{
+    background-color: transparent;
+    border-color: #fff;
+}
+
+.container form{
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 40px;
+    height: 100%;
+}
+
+
+.container input{
+    background-color: #eee;
+    border: none;
+    margin: 8px 0;
+    padding: 10px 15px;
+    font-size: 13px;
+    border-radius: 8px;
+    width: 100%;
+    outline: none;
+}
+
+.form-container{
+    position: absolute;
+    top: 0;
+    height: 100%;
+    transition: all 0.6s ease-in-out;
+}
+
+:root {
+    color: #202b2b;
+    background: #f3eee6;
+    --ink: #202b2b;
+    --teal: #176b63;
+    --coral: #d9664e;
+    --paper: #fffdfa;
+}
+
+body {
+    min-height: 100vh;
+    height: auto;
+    padding: 24px;
+    background-color: #f3eee6;
+    background-image: radial-gradient(#d4cfc4 0.7px, transparent 0.7px);
+    background-size: 17px 17px;
+}
+
+.container {
+    width: min(900px, 100%);
+    min-height: 540px;
+    border-radius: 18px;
+    background: var(--paper);
+    box-shadow: 0 24px 70px rgba(32, 43, 43, 0.16);
+}
+
+.container h1,
+.container h2,
+.container p {
+    margin-top: 0;
+}
+
+.container h1 {
+    margin-bottom: 8px;
+    color: var(--ink);
+    font-size: 30px;
+}
+
+.container h2 {
+    margin-bottom: 0;
+    font-size: 32px;
+}
+
+.container p {
+    margin: 18px 0 24px;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.container span {
+    margin: 18px 0 10px;
+    color: #687171;
+    font-size: 12px;
+    text-align: center;
+}
+
+.container a {
+    color: var(--ink);
+    font-size: 12px;
+    text-decoration: none;
+}
+
+.container button {
+    min-height: 44px;
+    padding: 0 30px;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    background: var(--teal);
+    color: #fff;
+    font: inherit;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background-color 160ms ease, transform 160ms ease;
+}
+
+.container button:hover {
+    background: #10564f;
+}
+
+.container button:active {
+    transform: scale(0.98);
+}
+
+.container button:focus-visible,
+.container a:focus-visible,
+.container input:focus-visible {
+    outline: 3px solid #e9a34d;
+    outline-offset: 3px;
+}
+
+.container button.hidden {
+    border-color: rgba(255, 255, 255, 0.8);
+    background: transparent;
+}
+
+.container button.hidden:hover {
+    background: rgba(255, 255, 255, 0.12);
+}
+
+.container form {
+    padding: 0 48px;
+    background: var(--paper);
+}
+
+.container input {
+    min-height: 46px;
+    padding: 0 14px;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    background: #f0f1ed;
+    color: var(--ink);
+    font: inherit;
+    font-size: 13px;
+}
+
+.form-container {
+    width: 50%;
+    transition: transform 600ms ease, opacity 300ms ease;
+}
+
+.sign-in {
+    left: 0;
+    z-index: 2;
+}
+
+.sign-up {
+    left: 0;
+    z-index: 1;
+    opacity: 0;
+}
+
+.container.active .sign-in {
+    transform: translateX(100%);
+}
+
+.container.active .sign-up {
+    z-index: 5;
+    transform: translateX(100%);
+    opacity: 1;
+    animation: reveal 600ms;
+}
+
+.social-icons {
+    display: flex;
+    gap: 10px;
+    margin: 18px 0 2px;
+}
+
+.social-icons .icon {
+    display: grid;
+    width: 38px;
+    height: 38px;
+    margin: 0;
+    place-items: center;
+    border: 1px solid #dedfda;
+    border-radius: 6px;
+    transition: border-color 160ms ease, color 160ms ease;
+}
+
+.social-icons .icon:hover {
+    border-color: var(--coral);
+    color: var(--coral);
+}
+
+.forgot-password {
+    margin-top: 16px !important;
+}
+
+.toggle-container {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    z-index: 10;
+    width: 50%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 110px 0 0 90px;
+    transition: transform 600ms ease, border-radius 600ms ease;
+}
+
+.container.active .toggle-container {
+    transform: translateX(-100%);
+    border-radius: 0 110px 90px 0;
+}
+
+.toggle {
+    position: relative;
+    left: -100%;
+    width: 200%;
+    height: 100%;
+    color: #fff;
+    background: linear-gradient(125deg, var(--teal), #245e56 55%, #bd563f);
+    transition: transform 600ms ease;
+}
+
+.container.active .toggle {
+    transform: translateX(50%);
+}
+
+.toggle-panel {
+    position: absolute;
+    top: 0;
+    display: flex;
+    width: 50%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 34px;
+    text-align: center;
+    transition: transform 600ms ease;
+}
+
+.toggle-left {
+    transform: translateX(-200%);
+}
+
+.container.active .toggle-left {
+    transform: translateX(0);
+}
+
+.toggle-right {
+    right: 0;
+}
+
+.container.active .toggle-right {
+    transform: translateX(200%);
+}
+
+.form-message {
+    position: fixed;
+    right: 16px;
+    bottom: 12px;
+    left: 16px;
+    margin: 0;
+    color: #465351;
+    font-size: 12px;
+    text-align: center;
+}
+
+@keyframes reveal {
+    0%, 49.99% { opacity: 0; }
+    50%, 100% { opacity: 1; }
+}
+
+@media (max-width: 640px) {
+    body {
+        padding: 14px;
+    }
+
+    .container {
+        min-height: 610px;
+    }
+
+    .container h1 {
+        font-size: 25px;
+    }
+
+    .container form {
+        justify-content: flex-start;
+        padding: 36px 22px 205px;
+    }
+
+    .form-container {
+        width: 100%;
+        height: calc(100% - 185px);
+    }
+
+    .container.active .sign-in {
+        transform: none;
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    .container.active .sign-up {
+        transform: none;
+        animation: none;
+    }
+
+    .toggle-container {
+        top: auto;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 185px;
+        border-radius: 32px 32px 0 0;
+    }
+
+    .container.active .toggle-container {
+        transform: none;
+        border-radius: 32px 32px 0 0;
+    }
+
+    .toggle {
+        left: 0;
+        width: 100%;
+        height: 200%;
+        transform: translateY(-50%);
+    }
+
+    .container.active .toggle {
+        transform: translateY(0);
+    }
+
+    .toggle-panel {
+        width: 100%;
+        height: 50%;
+        padding: 18px;
+    }
+
+    .toggle-panel h2 {
+        font-size: 24px;
+    }
+
+    .toggle-panel p {
+        margin: 8px 0 12px;
+    }
+
+    .toggle-left {
+        top: 0;
+        transform: translateY(-200%);
+    }
+
+    .container.active .toggle-left {
+        transform: translateY(0);
+    }
+
+    .toggle-right {
+        top: 50%;
+        right: auto;
+    }
+
+    .container.active .toggle-right {
+        transform: translateY(200%);
+    }
+
+    .social-icons {
+        margin-top: 12px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Sign In | Create Account</title>
+</head>
+<body>
+     <div class="container" id="container">
+        <div class="form-container sign-up">
+            <form id="signup-form">
+                <h1>Create Account</h1>
+                <div class="social-icons">
+                    <a href="#" class="icon" aria-label="Continue with Google"><i class="fa-brands fa-google-plus-g" aria-hidden="true"></i></a>
+                    <a href="#" class="icon" aria-label="Continue with Facebook"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a>
+                    <a href="#" class="icon" aria-label="Continue with LinkedIn"><i class="fa-brands fa-linkedin-in" aria-hidden="true"></i></a>
+                    <a href="#" class="icon" aria-label="Continue with GitHub"><i class="fa-brands fa-github" aria-hidden="true"></i></a>
+                </div>
+                <span>or use your email for registration</span>
+                <input type="text" name="name" placeholder="Name" autocomplete="name" aria-label="Name" required>
+                <input type="email" name="email" placeholder="Email" autocomplete="email" aria-label="Email" required>
+                <input type="password" name="password" placeholder="Password" autocomplete="new-password" aria-label="Password" required>
+                <button type="submit">Sign up</button>
+            </form>
+        </div>
+          <div class="form-container sign-in">
+                <form id="signin-form">
+                <h1>Sign In</h1>
+                <div class="social-icons">
+                    <a href="#" class="icon" aria-label="Continue with Google"><i class="fa-brands fa-google-plus-g" aria-hidden="true"></i></a>
+                    <a href="#" class="icon" aria-label="Continue with Facebook"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a>
+                    <a href="#" class="icon" aria-label="Continue with LinkedIn"><i class="fa-brands fa-linkedin-in" aria-hidden="true"></i></a>
+                    <a href="#" class="icon" aria-label="Continue with GitHub"><i class="fa-brands fa-github" aria-hidden="true"></i></a>
+                </div>
+                <span>or use your email and password</span>
+                <input type="email" name="email" placeholder="Email" autocomplete="email" aria-label="Email" required>
+                <input type="password" name="password" placeholder="Password" autocomplete="current-password" aria-label="Password" required>
+                <button type="submit">Sign in</button>
+                <a href="#" class="forgot-password">Forgot your password?</a>
+            </form>
+        </div>
+        <div class="toggle-container">
+            <div class="toggle">
+                <div class="toggle-panel toggle-left">
+                    <h2>Welcome back</h2>
+                    <p>Pick up where you left off.</p>
+                    <button class="hidden" type="button" id="login">Sign in</button>
+                </div>
+                <div class="toggle-panel toggle-right">
+                    <h2>New around here?</h2>
+                    <p>Create an account and get started.</p>
+                    <button class="hidden" type="button" id="register">Create account</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <p class="form-message" id="form-message" role="status" aria-live="polite"></p>
+    <script> 
+        const container = document.getElementById("container");
+const registerButton = document.getElementById("register");
+const loginButton = document.getElementById("login");
+const message = document.getElementById("form-message");
+
+registerButton.addEventListener("click", () => {
+	container.classList.add("active");
+	message.textContent = "";
+});
+
+loginButton.addEventListener("click", () => {
+	container.classList.remove("active");
+	message.textContent = "";
+});
+
+document.querySelectorAll(".form-container form").forEach((form) => {
+	form.addEventListener("submit", (event) => {
+		event.preventDefault();
+		message.textContent = "Authentication is not connected yet.";
+	});
+});
+
+document.querySelectorAll(".social-icons a, .forgot-password").forEach((link) => {
+	link.addEventListener("click", (event) => {
+		event.preventDefault();
+		message.textContent = link.classList.contains("forgot-password")
+			? "Password recovery is not connected yet."
+			: "Social sign-in is not connected yet.";
+	});
+});
+
+
+console.log("App.js loaded successfully.");
+    </script>
+</body>
+</html>
