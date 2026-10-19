@@ -456,10 +456,34 @@ body {
     }
 }
     </style>
+    <style>
+        .auth-page{display:flex;min-height:100vh;align-items:center;justify-content:center;padding:78px 24px 56px;background:radial-gradient(ellipse at 82% 18%,rgba(77,80,155,.26),transparent 37%),radial-gradient(ellipse at 12% 82%,rgba(255,153,0,.12),transparent 31%),#050711;color:#172337}
+        .auth-page::before{position:fixed;inset:0;background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:52px 52px;content:"";mask-image:linear-gradient(to bottom,black,transparent 80%);pointer-events:none}
+        .auth-page .container{z-index:1;width:min(960px,100%);min-height:560px;border:1px solid rgba(255,255,255,.16);border-radius:12px;background:#f8f8f5;box-shadow:0 35px 110px rgba(0,0,0,.55),0 0 80px rgba(75,78,151,.13)}
+        .auth-page .container h1{color:#131a2a;font-family:'Manrope','DM Sans',sans-serif}.auth-page .container h2{color:white;font-family:'Manrope','DM Sans',sans-serif}.auth-page .container span{color:#697284}
+        .auth-page .container button:not(.hidden):not(.password-toggle){background:#ed8c00;color:#111522}.auth-page .container button:not(.hidden):not(.password-toggle):hover{background:#ffab24}
+        .auth-page .container button:focus-visible,.auth-page .container a:focus-visible,.auth-page .container input:focus-visible{outline-color:#ff9900}
+        .auth-page .container form{padding:0 52px;background:#f8f8f5}.auth-page .container input{background:#eceef2;color:#151c2c}.auth-page .form-container{width:50%}
+        .auth-page .toggle-container{border-radius:4px 120px 120px 4px}.auth-page .container.active .toggle-container{border-radius:120px 4px 4px 120px}
+        .auth-page .toggle{background:radial-gradient(ellipse at 80% 15%,rgba(115,121,217,.38),transparent 42%),linear-gradient(135deg,#0a0d19,#17172e 58%,#332110)}
+        .auth-page .container button.hidden{color:white;border-color:rgba(255,255,255,.72)}.auth-page .container button.hidden:hover{background:rgba(255,255,255,.12)}
+        .auth-page .password-field{position:relative;width:100%}.auth-page .password-field input{padding-right:64px}
+        .auth-page .container .password-toggle{position:absolute;top:50%;right:10px;min-height:32px;padding:0 8px;border:0;background:transparent;color:#586176;font-size:10px;text-transform:uppercase;transform:translateY(-50%)}
+        .auth-page .container .password-toggle:hover{background:rgba(20,30,50,.07)}.auth-page .form-message{z-index:2;bottom:16px;color:#e7eaf2}
+        .auth-page .direct{position:fixed;z-index:3;top:22px;left:max(22px,calc((100vw - 960px)/2));display:flex;align-items:center;gap:18px}
+        .auth-page .direct a,.auth-page .demo-signout{color:#e2e5ed;font-size:11px}.auth-page .direct a::before{margin-right:8px;color:#ff9900;content:"<"}
+        .auth-page .demo-signout{border:0;background:transparent;cursor:pointer;text-decoration:underline;text-underline-offset:4px}.auth-page .social-icons .icon{color:#172337}.auth-page .forgot-password{color:#4f586b}
+        .auth-page .route-leaving::after{position:fixed;inset:0;z-index:110;background:radial-gradient(ellipse at 50% 48%,#171b34,#03040a 72%);content:"";pointer-events:none;animation:auth-route-cover .24s ease forwards}
+        @keyframes auth-route-cover{from{opacity:0}to{opacity:1}}
+        @media(max-width:700px){.auth-page{padding:70px 14px 52px}.auth-page .container{min-height:620px}.auth-page .container form{padding-right:24px;padding-left:24px}.auth-page .container .form-container{width:100%}.auth-page .toggle-container,.auth-page .container.active .toggle-container{border-radius:30px 30px 0 0}.auth-page .direct{top:17px;left:18px}}
+        @media(max-width:440px){.auth-page .container{min-height:650px}}
+        @media(prefers-reduced-motion:reduce){.auth-page .route-leaving::after{animation-duration:.01ms}}
+    </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <title>Sign In | Create Account</title>
 </head>
-<body>
+<body class="auth-page">
+    <div class="direct" id="direct"><a href="index.html">Back to Morrow Market</a></div>
      <div class="container" id="container">
         <div class="form-container sign-up">
             <form id="signup-form">
@@ -471,9 +495,9 @@ body {
                     <a href="#" class="icon" aria-label="Continue with GitHub"><i class="fa-brands fa-github" aria-hidden="true"></i></a>
                 </div>
                 <span>or use your email for registration</span>
-                <input type="text" name="name" placeholder="Name" autocomplete="name" aria-label="Name" required>
+                <input type="text" name="name" placeholder="Name" autocomplete="name" aria-label="Name" minlength="2" required>
                 <input type="email" name="email" placeholder="Email" autocomplete="email" aria-label="Email" required>
-                <input type="password" name="password" placeholder="Password" autocomplete="new-password" aria-label="Password" required>
+                <div class="password-field"><input type="password" name="password" placeholder="Password" autocomplete="new-password" aria-label="Password" minlength="8" required><button class="password-toggle" type="button" aria-label="Show password" aria-pressed="false">Show</button></div>
                 <button type="submit">Sign up</button>
             </form>
         </div>
@@ -488,7 +512,7 @@ body {
                 </div>
                 <span>or use your email and password</span>
                 <input type="email" name="email" placeholder="Email" autocomplete="email" aria-label="Email" required>
-                <input type="password" name="password" placeholder="Password" autocomplete="current-password" aria-label="Password" required>
+                <div class="password-field"><input type="password" name="password" placeholder="Password" autocomplete="current-password" aria-label="Password" required><button class="password-toggle" type="button" aria-label="Show password" aria-pressed="false">Show</button></div>
                 <button type="submit">Sign in</button>
                 <a href="#" class="forgot-password">Forgot your password?</a>
             </form>
@@ -509,40 +533,87 @@ body {
         </div>
     </div>
     <p class="form-message" id="form-message" role="status" aria-live="polite"></p>
-    <script> 
+    <script>
         const container = document.getElementById("container");
-const registerButton = document.getElementById("register");
-const loginButton = document.getElementById("login");
-const message = document.getElementById("form-message");
+        const message = document.getElementById("form-message");
+        const sessionKey = "morrow-demo-session";
+        const params = new URLSearchParams(window.location.search);
 
-registerButton.addEventListener("click", () => {
-	container.classList.add("active");
-	message.textContent = "";
-});
+        function readSession() {
+            try { return JSON.parse(localStorage.getItem(sessionKey) || "null"); }
+            catch { return null; }
+        }
+        function returnToStore() {
+            document.documentElement.classList.add("route-leaving");
+            window.setTimeout(() => { window.location.href = "index.html?welcome=1"; }, 180);
+        }
 
-loginButton.addEventListener("click", () => {
-	container.classList.remove("active");
-	message.textContent = "";
-});
+        const existingSession = readSession();
+        if (existingSession && params.get("switch") !== "1") window.location.replace("index.html?welcome=1");
+        if (params.get("mode") === "register") container.classList.add("active");
 
-document.querySelectorAll(".form-container form").forEach((form) => {
-	form.addEventListener("submit", (event) => {
-		event.preventDefault();
-		message.textContent = "Authentication is not connected yet.";
-	});
-});
+        document.getElementById("register").addEventListener("click", () => { container.classList.add("active"); message.textContent = ""; });
+        document.getElementById("login").addEventListener("click", () => { container.classList.remove("active"); message.textContent = ""; });
+        document.querySelector(".direct a").addEventListener("click", (event) => {
+            if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+            event.preventDefault();
+            document.documentElement.classList.add("route-leaving");
+            window.setTimeout(() => window.location.assign(event.currentTarget.href), 180);
+        });
 
-document.querySelectorAll(".social-icons a, .forgot-password").forEach((link) => {
-	link.addEventListener("click", (event) => {
-		event.preventDefault();
-		message.textContent = link.classList.contains("forgot-password")
-			? "Password recovery is not connected yet."
-			: "Social sign-in is not connected yet.";
-	});
-});
+        if (params.get("switch") === "1" && existingSession) {
+            const signOut = document.createElement("button");
+            signOut.type = "button";
+            signOut.className = "demo-signout";
+            signOut.textContent = "Sign out of this demo session";
+            document.getElementById("direct").append(signOut);
+            signOut.addEventListener("click", () => {
+                localStorage.removeItem(sessionKey);
+                message.textContent = "Demo session cleared. You can now sign in or create an account.";
+                signOut.remove();
+            });
+        }
 
+        document.querySelectorAll(".password-toggle").forEach((toggle) => toggle.addEventListener("click", () => {
+            const input = toggle.parentElement.querySelector("input"), showing = input.type === "password";
+            input.type = showing ? "text" : "password";
+            toggle.textContent = showing ? "Hide" : "Show";
+            toggle.setAttribute("aria-label", showing ? "Hide password" : "Show password");
+            toggle.setAttribute("aria-pressed", String(showing));
+        }));
 
-console.log("App.js loaded successfully.");
+        document.querySelectorAll(".form-container form").forEach((form) => form.addEventListener("submit", (event) => {
+            event.preventDefault();
+            if (!form.reportValidity()) return;
+            if (form.id === "signup-form" && form.elements.password.value.length < 8) {
+                message.textContent = "Choose a password with at least 8 characters.";
+                form.elements.password.focus();
+                return;
+            }
+            const submitButton = form.querySelector('[type="submit"]');
+            submitButton.disabled = true;
+            submitButton.textContent = "Please wait...";
+            message.textContent = "Opening your demo session...";
+            window.setTimeout(() => {
+                const session = {
+                    email: form.elements.email.value.trim(),
+                    name: form.id === "signup-form" ? form.elements.name.value.trim() : form.elements.email.value.trim().split("@")[0],
+                    createdAt: new Date().toISOString()
+                };
+                try { localStorage.setItem(sessionKey, JSON.stringify(session)); }
+                catch { message.textContent = "Browser storage is unavailable. This demo session will not persist."; }
+                submitButton.textContent = "Welcome in";
+                message.textContent = "Demo only: credentials are not verified or sent to a server.";
+                window.setTimeout(returnToStore, 850);
+            }, 550);
+        }));
+
+        document.querySelectorAll(".social-icons a, .forgot-password").forEach((link) => link.addEventListener("click", (event) => {
+            event.preventDefault();
+            message.textContent = link.classList.contains("forgot-password")
+                ? "Password recovery requires a connected account service."
+                : "Social sign-in is not connected in this demo.";
+        }));
     </script>
 </body>
 </html>
